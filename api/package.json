@@ -1,0 +1,12 @@
+{
+  "name": "api",
+  "packageManager": "yarn@4.6.0",
+  "devDependencies": {
+    "bson": "^6.10.2",
+    "cypress": "13.17.0",
+    "cypress-mongodb": "^6.2.1",
+    "cypress-plugin-api": "^2.11.2",
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.10.1"
+  }
+}

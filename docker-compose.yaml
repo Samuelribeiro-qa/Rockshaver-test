@@ -1,0 +1,107 @@
+services:
+  # Serviço do MongoDB para armazenar dados
+  mongodb:
+    container_name: rockshaver-db  # Nome do contêiner MongoDB
+    image: mongo:5.0  # Usa a imagem MongoDB versão 5.0
+    networks: 
+      - skynet  # Conecta o MongoDB à rede 'skynet'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cypress  # Usuário administrador do MongoDB
+      - MONGO_INITDB_ROOT_PASSWORD=skills  # Senha do usuário administrador
+      - TZ=America/Sao_Paulo  # Define o fuso horário para São Paulo
+    restart: unless-stopped  # Reinicia o contêiner, exceto quando explicitamente parado
+    ports:
+      - "27017:27017"  # Mapeia a porta padrão do MongoDB
+
+  # Interface web para gerenciamento do MongoDB
+  mongoxp:
+    container_name: mongo-express  # Nome do contêiner Mongo Express
+    image: mongo-express  # Usa a imagem Mongo Express
+    networks: 
+      - skynet  # Conecta o Mongo Express à rede 'skynet'
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=cypress  # Usuário administrador
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=skills  # Senha do administrador
+      - ME_CONFIG_MONGODB_URL=mongodb://cypress:skills@mongodb:27017/?authSource=admin  # URL de conexão
+      - ME_CONFIG_BASICAUTH_USERNAME=cypress  # Usuário para acesso básico
+      - ME_CONFIG_BASICAUTH_PASSWORD=skills  # Senha para acesso básico
+      - TZ=America/Sao_Paulo  # Fuso horário São Paulo
+    links:
+      - mongodb  # Conecta diretamente ao MongoDB
+    restart: unless-stopped  # Reinicia automaticamente em caso de falha
+    ports:
+      - "17017:8081"  # Mapeia a interface web na porta 17017
+
+  # Backend da aplicação Rockshaver
+  rockshaver-api:
+    platform: linux/amd64  # Define a arquitetura do sistema
+    container_name: rockshaver-api  # Nome do contêiner API
+    image: papitodev/rockshaver-api:frogger  # Usa a imagem específica
+    networks:
+      - skynet  # Conecta à rede 'skynet'
+    depends_on:
+      - mongodb  # Garante que o MongoDB esteja ativo
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/rockshaver  # URI de conexão MongoDB
+      - MAILTRAP_TOKEN=35754fda2865b9776b6b7bc5655aeba9  # Token Mailtrap
+      - INBOX_ID=3353792  # ID da caixa de entrada
+      - TZ=America/Sao_Paulo  # Fuso horário São Paulo
+    ports:
+      - "3333:3333"  # Porta da API
+    restart: unless-stopped  # Reinicia automaticamente
+    command: /bin/sh -c "npm run go"  # Comando inicial
+
+  # Frontend web da aplicação Rockshaver
+  rockshaver-web:
+    platform: linux/amd64  # Define a arquitetura
+    container_name: rockshaver-web  # Nome do contêiner
+    image: papitodev/rockshaver-web:frogger  # Usa a imagem frontend
+    networks:
+      - skynet  # Conecta à rede 'skynet'
+    depends_on:
+      - rockshaver-api  # Garante que a API esteja ativa
+    environment:
+      - TZ=America/Sao_Paulo  # Fuso horário São Paulo
+    ports:
+      - "3000:3000"  # Porta frontend
+    restart: unless-stopped  # Reinicia automaticamente
+
+  # Aplicativo mobile da aplicação Rockshaver
+  rockshaver-mob:
+    platform: linux/amd64
+    container_name: rockshaver-mob
+    image: papitodev/rockshaver-mob:frogger
+    networks:
+      - skynet
+    depends_on:
+      - rockshaver-api
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "8100:8100"
+    restart: unless-stopped
+
+  # Serviço Jenkins para integração contínua
+  jenkins:
+    build: ./jenkins  # Usa Dockerfile localizado em ./jenkins
+    container_name: jenkins-server  # Nome do contêiner Jenkins
+    privileged: true  # Permite Docker-in-Docker
+    user: root  # Executa como root
+    networks:
+      - skynet  # Conecta à rede 'skynet'
+    restart: always  # Reinicia sempre que necessário
+    environment:
+      - TZ=America/Sao_Paulo  # Fuso horário São Paulo
+    ports:
+      - "8080:8080"  # Interface web Jenkins
+      - "50000:50000"  # Comunicação com agentes
+    volumes:
+      - jenkins_home:/var/jenkins_home  # Persiste dados do Jenkins
+      - /var/run/docker.sock:/var/run/docker.sock  # Acesso ao Docker host
+
+volumes:
+  jenkins_home:  # Volume para persistência de dados Jenkins
+
+networks: 
+  skynet:
+    driver: bridge  # Usa rede do tipo bridge para comunicação entre contêineres

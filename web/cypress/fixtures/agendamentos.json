@@ -1,0 +1,54 @@
+{
+  "sucesso": {
+    "data": "18/02/2025",
+    "hora": "08:00",
+    "dia": "18",
+    "profissional": {
+      "nome": "Freddie",
+      "matricula": 1001
+    },
+    "servico": {    
+    "codigo": 3,
+    "descricao": "Combo"
+    },
+    "usuario": {
+        "fullname": "Samuel Vinicius",
+        "email": "samuelvinicius@qa.com"
+    }
+  },
+    "conflito": {
+      "data": "14/02/2025",
+      "hora": "18:00",
+      "dia": "14",
+      "profissional": {
+        "nome": "Kurt",
+        "matricula": 1008
+      },
+      "servico": {
+        "codigo": 1,
+        "descricao": "Corte"
+      },
+      "usuario": {
+        "fullname": "Matheus Agiota",
+        "email": "AgiotaMathias@yahoo.com"
+      }
+    },
+    "duplicado": {
+    "data": "17/02/2025",
+    "hora": "15:00",
+    "dia": "17",
+    "profissional": {
+      "nome": "Slash",
+      "matricula": 1007
+    },
+    "servico": {
+      "codigo": 1,
+      "descricao": "Corte"
+    },
+    "usuario": {
+      "fullname": "Eduardo Bola",
+      "email": "Duduh@gmail.com"
+    }
+  }
+  
+}

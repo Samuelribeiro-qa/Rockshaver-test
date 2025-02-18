@@ -1,0 +1,53 @@
+{
+  "matricula": "1008",
+  "senha": "pwd123",
+  "agendamentos": [
+    {
+      "nomeCliente": "Bruce Wayne",
+      "emailCliente": "bruce.wayne@wayneenterprises.com",
+      "data": "10/01/2025",
+      "hora": "08:30",
+      "codigoServico": 1,
+      "servicoNome": "Corte",
+      "preco": 50
+    },
+    {
+      "nomeCliente": "Selina Kyle",
+      "emailCliente": "selina.kyle@catwoman.com",
+      "data": "15/01/2025",
+      "hora": "10:00",
+      "codigoServico": 2,
+      "servicoNome": "Barba",
+      "preco": 50
+    },
+    {
+      "nomeCliente": "Harley Quinn",
+      "emailCliente": "harley.quinn@arkham.com",
+      "data": "20/02/2025",
+      "hora": "14:30",
+      "codigoServico": 3,
+      "servicoNome": "Combo",
+      "preco": 90
+    },
+    {
+      "nomeCliente": "Dick Grayson",
+      "emailCliente": "dick.grayson@bludhaven.com",
+      "data": "25/02/2025",
+      "hora": "11:00",
+      "codigoServico": 4,
+      "servicoNome": "Tintura",
+      "preco": 70
+    },
+    {
+      "nomeCliente": "Alfred Pennyworth",
+      "emailCliente": "alfred.pennyworth@wayneestate.com",
+      "data": "05/03/2025",
+      "hora": "15:00",
+      "codigoServico": 1,
+      "servicoNome": "Corte",
+      "preco": 50
+    }
+  ]
+}
+
+

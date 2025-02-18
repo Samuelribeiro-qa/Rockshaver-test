@@ -1,0 +1,74 @@
+{
+  "profissional": {
+    "matricula": "1002",
+    "senha": "pwd123",
+    "nome": "Ozzy"
+    },
+    "agendamentos": [
+      {
+        "data": "09/12/2024",
+        "hora": "09:00",
+        "dia": "9",
+        "servico": {
+          "codigo": 1,
+          "descricao": "Corte"
+        },
+        "usuario": {
+          "nome": "Steve Rogers",
+          "email": "steve.rogers@avengers.com"
+        }
+      },
+      {
+        "data": "10/12/2024",
+        "hora": "10:30",
+        "dia": "10",
+        "servico": {
+          "codigo": 2,
+          "descricao": "Barba"
+        },
+        "usuario": {
+          "nome": "Thor Odinson",
+          "email": "thor.odinson@asgard.com"
+        }
+      },
+      {
+        "data": "11/12/2024",
+        "hora": "14:00",
+        "dia": "11",
+        "servico": {
+          "codigo": 3,
+          "descricao": "Combo"
+        },
+        "usuario": {
+          "nome": "Bruce Banner",
+          "email": "bruce.banner@avengers.com"
+        }
+      },
+      {
+        "data": "12/12/2024",
+        "hora": "13:00",
+        "dia": "12",
+        "servico": {
+          "codigo": 4,
+          "descricao": "Tintura"
+        },
+        "usuario": {
+          "nome": "Natasha Romanoff",
+          "email": "natasha.romanoff@avengers.com"
+        }
+      },
+      {
+        "data": "13/12/2024",
+        "hora": "11:00",
+        "dia": "13",
+        "servico": {
+          "codigo": 1,
+          "descricao": "Corte"
+        },
+        "usuario": {
+          "nome": "Peter Parker",
+          "email": "peter.parker@dailybugle.com"
+        }
+      }
+    ]
+  }
