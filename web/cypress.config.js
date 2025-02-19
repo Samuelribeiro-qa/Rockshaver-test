@@ -19,5 +19,6 @@ module.exports = {
     baseUrl: process.env.WEB_URL,
     viewportWidth: 1920,
     viewportHeigth:1080,
+    video: true
   },
 };

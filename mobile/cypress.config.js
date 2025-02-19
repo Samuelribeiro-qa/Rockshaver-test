@@ -16,6 +16,7 @@ module.exports = {
       // implement node event listeners here
       configurePlugin(on);
     },
-    baseUrl: process.env.WEB_URL
+    baseUrl: process.env.WEB_URL,
+    video: true
   },
 };
