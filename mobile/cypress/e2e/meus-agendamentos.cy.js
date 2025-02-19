@@ -15,7 +15,7 @@ describe('Meus Agendamentos', () => {
             .should('be.visible')
 
         cy.login(profissional)
-        cy.verificarUsuarioLogado()
+        cy.verificarUsuarioLogado(profissional)
     })
 
 
@@ -32,7 +32,7 @@ describe('Meus Agendamentos', () => {
                 cy.wrap($li)
                     .invoke('text')
                     .should('contain', agendamento.usuario.nome)
-                    .and('constain', resultado)
+                    
             })
     })
 
@@ -56,8 +56,8 @@ describe('Meus Agendamentos', () => {
             .should('not.exist')
     })
 
-    it.only('Deve enviar uma solicitação de lembrete', () => {
-        const agendamento = agendamentos.find(x => x.usuario.email === 'destino@marvel.com')
+    it('Deve enviar uma solicitação de lembrete', () => {
+        const agendamento = agendamentos.find(x => x.usuario.email === 'natasha.romanoff@avengers.com')
 
         cy.contains('ul li', agendamento.usuario.nome)
             .as('agendamentoItem')

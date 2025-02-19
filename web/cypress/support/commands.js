@@ -27,14 +27,13 @@
 import './actions/agendamento.action'
 import './actions/precadastro.action'
 
-Cypress.Commands.add('agendamentoAPI', (agendamento) => {
-
-   cy.request({
+Cypress.Commands.add('agendamentoApi', (agendamento) => {
+    cy.request({
     method: 'POST',
-    url: `${Cypress.env('baseApi')}/api/agendamentos`,
+    url: `http://localhost:3333/api/agendamentos`,
     headers: {
-        'content-type': 'application/json',
-        'authorization': 'Bearer 3a8a9b8fae87baf503e7c5fe5b97fd72'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer 3a8a9b8fae87baf503e7c5fe5b97fd72'
     },
     body: {
         nomeCliente: agendamento.usuario.fullname,
