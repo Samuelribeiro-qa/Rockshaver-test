@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Testes no Frontend (web)') {
+        stage('Testes no Frontend (Web)') {
             steps {
                 dir('web') {
                     sh 'echo teste'
