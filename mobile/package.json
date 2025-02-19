@@ -5,6 +5,7 @@
     "bson": "^6.10.2",
     "cypress": "13.16.1",
     "cypress-mongodb": "^6.2.1",
+    "cypress-tesults-reporter": "^1.4.1",
     "dotenv": "^16.4.7"
   }
 }
