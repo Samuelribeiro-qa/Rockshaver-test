@@ -3,7 +3,7 @@ pipeline {
         docker { image 'cypress/browsers:latest' }
     }
     stages {
-        stage('Testes no backend') {
+        stage('Testes no Backend') {
             steps {
                 dir('api') {
                     sh 'npm install'
@@ -12,6 +12,7 @@ pipeline {
                 }
             }
         }
+
         stage('Testes no Frontend (Mobile)') {
             steps {
                 dir('mobile') {
@@ -19,12 +20,13 @@ pipeline {
                 }
             }
         }
-           stage('Testes no Frontend (web)') {
+
+        stage('Testes no Frontend (web)') {
             steps {
                 dir('web') {
                     sh 'echo teste'
                 }
             }
-        } 
+        }
     }
 }
