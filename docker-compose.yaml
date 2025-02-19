@@ -36,7 +36,7 @@ services:
   rockshaver-api:
     platform: linux/amd64  # Define a arquitetura do sistema
     container_name: rockshaver-api  # Nome do contêiner API
-    image: papitodev/rockshaver-api:frogger  # Usa a imagem específica
+    image: papitodev/rockshaver-api:mega  # Usa a imagem específica
     networks:
       - skynet  # Conecta à rede 'skynet'
     depends_on:
